@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Al-Hinta Agricultural Services | محلات الحنطة للخدمات الزراعية</title>
+    <meta name="description"
+        content="Certified imported seeds, alfalfa, fertilizers and farm tools in Riyadh. Request a quote today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&family=Tajawal:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+    <!-- ===== TAILWIND CONFIG ===== -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: 'var(--bg)', surface: 'var(--surface)', ink: 'var(--ink)', muted: 'var(--muted)', line: 'var(--line)',
+                        primary: 'var(--primary)', gold: 'var(--gold)', forest: '#1b4332', wheat: '#d4a373', sand: '#f9f8f6'
+                    },
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'Tahoma', 'system-ui', 'sans-serif'], display: ['Outfit', '"Plus Jakarta Sans"', 'Tahoma', 'sans-serif'] }
+                }
+            }
+        };
+    </script>
+
+    <!-- ===== CUSTOM STYLES ===== -->
+    <style>
+        :root {
+            --bg: #f9f8f6;
+            --surface: #fff;
+            --ink: #2d3142;
+            --muted: #5d6275;
+            --line: #e6e2da;
+            --primary: #1b4332;
+            --gold: #d4a373;
+            --on-primary: #f9f8f6;
+            --tint: #efece5;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #111815;
+                --surface: #19231e;
+                --ink: #eeebe4;
+                --muted: #a9b0aa;
+                --line: #2b3a33;
+                --primary: #2f6b50;
+                --tint: #1d2a24;
+                color-scheme: dark
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #111815;
+            --surface: #19231e;
+            --ink: #eeebe4;
+            --muted: #a9b0aa;
+            --line: #2b3a33;
+            --primary: #2f6b50;
+            --tint: #1d2a24;
+            color-scheme: dark
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 84px)
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Plus Jakarta Sans', Tahoma, system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0 0 auto;
+            height: env(safe-area-inset-top, 0px);
+            z-index: 60;
+            background: var(--bg)
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: Outfit, 'Plus Jakarta Sans', Tahoma, sans-serif;
+            letter-spacing: -.01em
+        }
+
+        html[lang="ar"] body,
+        html[lang="ar"] h1,
+        html[lang="ar"] h2,
+        html[lang="ar"] h3,
+        html[lang="ar"] .font-display {
+            font-family: Tajawal, Tahoma, sans-serif;
+            letter-spacing: 0
+        }
+
+        html[lang="ar"] h1 {
+            line-height: 1.3
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 6px
+        }
+
+        #hdr {
+            top: env(safe-area-inset-top, 0px);
+            transition: box-shadow .3s, background-color .3s
+        }
+
+        #hdr.scrolled {
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 6px 24px -12px rgba(0, 0, 0, .25)
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            border-radius: .65rem;
+            padding: .8rem 1.4rem;
+            font-weight: 600;
+            transition: transform .25s ease, box-shadow .25s ease, background-color .25s
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -10px rgba(27, 67, 50, .55)
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--on-primary)
+        }
+
+        .btn-ghost {
+            border: 1.5px solid var(--line);
+            color: var(--ink);
+            background: var(--surface)
+        }
+
+        .btn-gold {
+            background: #d4a373;
+            color: #1b4332
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 1rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .04)
+        }
+
+        .lift {
+            transition: transform .35s ease, box-shadow .35s ease
+        }
+
+        .lift:hover {
+            transform: scale(1.03);
+            box-shadow: 0 18px 36px -18px rgba(0, 0, 0, .35)
+        }
+
+        .rise {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: rise .5s ease-out forwards
+        }
+
+        @keyframes rise {
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .5s ease-out, transform .5s ease-out
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none
+        }
+
+        details>summary {
+            list-style: none;
+            cursor: pointer
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none
+        }
+
+        details[open] .chev {
+            transform: rotate(45deg)
+        }
+
+        .chev {
+            transition: transform .25s
+        }
+
+        .field {
+            width: 100%;
+            border-radius: .65rem;
+            border: 1.5px solid #3f6a58;
+            background: #fff;
+            color: #2d3142;
+            padding: .75rem .9rem
+        }
+
+        .field[aria-invalid="true"] {
+            border-color: #e9a08f
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto
+            }
+
+            .rise,
+            .reveal {
+                opacity: 1;
+                transform: none;
+                animation: none;
+                transition: none
+            }
+
+            .btn,
+            .lift {
+                transition: none
+            }
+
+            .btn:hover,
+            .lift:hover {
+                transform: none
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+
+    <header id="hdr" class="fixed inset-x-0 z-50">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+            <a href="#top" class="flex items-center gap-2 font-display text-lg font-semibold text-primary"
+                aria-label="Al-Hinta Agricultural Services home">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d4a373" stroke-width="1.8"
+                    stroke-linecap="round" aria-hidden="true">
+                    <path
+                        d="M12 22V8M12 8c0-3 1.5-5 3-6 .5 3-.5 5-3 6zM12 8C12 5 10.500 3 9 2c-.5 3 .5 5 3 6zM12 14c0-2.500 1.500-4 3.500-4.500 0 2.500-1.200 4-3.500 4.500zM12 14c0-2.500-1.500-4-3.500-4.500 0 2.500 1.200 4 3.500 4.500zM12 20c0-2 1.200-3.200 3-3.500 0 2-1 3.200-3 3.500zM12 20c0-2-1.200-3.200-3-3.500 0 2 1 3.200 3 3.500z" />
+                </svg>
+                <span class="text-ink"><span>Al-Hinta</span> <span
+                        class="hidden sm:inline font-normal text-muted">Agricultural
+                        Services</span></span>
+            </a>
+            <nav class="hidden items-center gap-6 text-sm font-medium lg:flex" aria-label="Primary">
+                <a href="#seeds" class="hover:text-primary">Seeds</a><a href="#alfalfa"
+                    class="hover:text-primary">Alfalfa</a>
+                <a href="#fertilizers" class="hover:text-primary">Fertilizers</a><a href="#tools"
+                    class="hover:text-primary">Tools</a>
+                <a href="#about" class="hover:text-primary">About Us</a><a href="#reviews"
+                    class="hover:text-primary">Reviews</a>
+            </nav>
+            <div class="flex items-center gap-2">
+                <button id="dir" type="button" class="btn btn-ghost !px-3 !py-2 text-sm"
+                    aria-label="Switch language">العربية</button>
+                <a href="tel:+966114112913" dir="ltr" class="btn btn-ghost hidden !py-2 text-sm md:inline-flex">+966 11
+                    411
+                    2913</a>
+                <a href="#quote" class="btn btn-primary !py-2 text-sm">Request Quote / Order</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- HERO -->
+        <section class="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-20 pt-32 sm:px-6 lg:grid-cols-2 lg:pt-40">
+            <div>
+                <p class="rise inline-block rounded-full border border-line bg-surface px-4 py-1.5 text-sm text-muted"
+                    style="animation-delay:0ms">Riyadh's Trusted Agricultural Partner • 4.0★ Rated (221+ Reviews)</p>
+                <h1 class="rise mt-6 text-4xl font-semibold leading-[1.08] sm:text-5xl xl:text-6xl"
+                    style="animation-delay:100ms">Certified Imported Seeds &amp; High-Yield Fertilizers for Saudi Farms.
+                </h1>
+                <p class="rise mt-6 max-w-xl text-lg leading-relaxed text-muted" style="animation-delay:200ms">From our
+                    home on
+                    Salam Street, Al Dubiyah to farms across the Kingdom—supplying premium alfalfa seeds, crop seeds,
+                    and
+                    professional farming tools with proven reliability.</p>
+                <div class="rise mt-8 flex flex-wrap gap-3" style="animation-delay:300ms">
+                    <a href="#seeds" class="btn btn-primary">Explore Seed Catalog</a>
+                    <a href="tel:+966114112913" class="btn btn-ghost">Call +966 11 411 2913</a>
+                </div>
+            </div>
+            <figure class="rise lift card overflow-hidden" style="animation-delay:400ms">
+                <svg viewBox="0 0 560 440" role="img"
+                    aria-label="Illustration of imported seed sacks with green sprouts growing from open furrows"
+                    class="block w-full">
+                    <rect width="560" height="440" fill="#1b4332" />
+                    <circle cx="430" cy="100" r="54" fill="#d4a373" opacity=".9" />
+                    <path d="M0 300 Q140 260 280 290 T560 270 V440 H0Z" fill="#2d6a4f" />
+                    <path d="M0 350 Q160 320 300 345 T560 330 V440 H0Z" fill="#d4a373" />
+                    <g fill="#f9f8f6">
+                        <rect x="70" y="190" width="130" height="150" rx="14" />
+                        <rect x="215" y="215" width="110" height="125" rx="14" opacity=".92" />
+                    </g>
+                    <g fill="#1b4332" font-family="Outfit,sans-serif" font-weight="600"><text x="135" y="250"
+                            font-size="22" text-anchor="middle">ALFALFA</text><text x="135" y="276" font-size="13"
+                            text-anchor="middle" font-weight="500">Certified · Imported</text><text x="270" y="270"
+                            font-size="19" text-anchor="middle">CROP</text><text x="270" y="293" font-size="13"
+                            text-anchor="middle" font-weight="500">SEEDS</text></g>
+                    <g stroke="#8fd19e" stroke-width="5" stroke-linecap="round" fill="#8fd19e">
+                        <path d="M390 345V285" fill="none" />
+                        <path
+                            d="M390 295c-22 0-34-12-36-30 22 0 34 10 36 30zM390 285c20-2 32-14 34-32-22 2-32 14-34 32z" />
+                        <path d="M470 350V310" fill="none" />
+                        <path
+                            d="M470 318c-16 0-24-8-26-22 16 0 24 8 26 22zM470 310c14-2 22-10 24-24-16 2-22 10-24 24z" />
+                    </g>
+                </svg>
+                <figcaption class="px-5 py-4 text-sm text-muted">Imported seed lots, tested before they reach your
+                    field.
+                </figcaption>
+            </figure>
+        </section>
+
+        <!-- TRUST -->
+        <section class="border-y border-line bg-[var(--tint)]" aria-label="Credentials">
+            <dl class="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-10 sm:px-6 lg:grid-cols-4">
+                <div class="reveal">
+                    <dt class="text-sm text-muted">Verified Reviews</dt>
+                    <dd class="font-display text-3xl font-semibold text-primary">221+</dd>
+                </div>
+                <div class="reveal">
+                    <dt class="text-sm text-muted">Riyadh market expertise</dt>
+                    <dd class="font-display text-3xl font-semibold text-primary">Decades</dd>
+                </div>
+                <div class="reveal">
+                    <dt class="text-sm text-muted">Certified germination rates</dt>
+                    <dd class="font-display text-3xl font-semibold text-primary">100%</dd>
+                </div>
+                <div class="reveal">
+                    <dt class="text-sm text-muted">Salam St. warehouse</dt>
+                    <dd class="font-display text-xl font-semibold text-primary">Pickup &amp; delivery</dd>
+                </div>
+            </dl>
+        </section>
+
+        <!-- PROBLEM / SOLUTION -->
+        <section id="about" class="mx-auto max-w-7xl px-4 py-24 sm:px-6">
+            <h2 class="reveal max-w-2xl text-3xl font-semibold sm:text-4xl">Built for Modern Saudi Agriculture.</h2>
+            <figure class="reveal mt-10 overflow-hidden rounded-2xl border border-line"><img
+                    class="aspect-[16/7] w-full object-cover" loading="lazy"
+                    alt="Salam Street warehouse (placeholder image)"
+                    src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'><rect width='800' height='500' fill='%23e9dcc6'/><rect y='330' width='800' height='170' fill='%23c9a26f'/><rect x='170' y='170' width='460' height='200' fill='%23f9f8f6'/><path d='M150 180L400 90L650 180Z' fill='%231b4332'/><rect x='330' y='250' width='140' height='120' fill='%232d6a4f'/><rect x='215' y='230' width='70' height='60' fill='%23d4a373'/><rect x='515' y='230' width='70' height='60' fill='%23d4a373'/></svg>">
+            </figure>
+            <div class="mt-12 grid gap-6 md:grid-cols-2">
+                <div class="reveal card p-8">
+                    <h3 class="text-xl font-semibold">The usual supply headaches</h3>
+                    <ul class="mt-5 space-y-3 text-muted">
+                        <li>Inconsistent seed batches that germinate unevenly.</li>
+                        <li>Delayed rural transport that misses planting windows.</li>
+                        <li>Unclear pricing that changes between calls.</li>
+                    </ul>
+                </div>
+                <div class="reveal rounded-2xl bg-forest p-8 text-sand">
+                    <h3 class="text-xl font-semibold">The Al-Hinta standard</h3>
+                    <ul class="mt-5 space-y-3 text-sand/85">
+                        <li>Rigorously tested imported seeds, batch by batch.</li>
+                        <li>Transparent pricing, confirmed in your quote.</li>
+                        <li>Fast Riyadh dispatch or same-day warehouse pickup.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="bg-[var(--tint)] py-24" aria-labelledby="prod">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6">
+                <h2 id="prod" class="reveal text-3xl font-semibold sm:text-4xl">Everything your field needs, from one
+                    counter.
+                </h2>
+                <div class="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4" id="products"></div>
+                <div class="mt-8 grid gap-6 sm:grid-cols-2">
+                    <figure class="reveal lift overflow-hidden rounded-2xl border border-line"><img
+                            class="aspect-[16/10] w-full object-cover" loading="lazy"
+                            alt="Green crop rows in a Saudi field (placeholder image)"
+                            src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'><rect width='800' height='500' fill='%23cfe3d4'/><circle cx='620' cy='110' r='60' fill='%23d4a373'/><path d='M0 250Q400 200 800 250V500H0Z' fill='%232d6a4f'/><path d='M0 300Q400 260 800 300V500H0Z' fill='%231b4332'/><path d='M0 360Q400 330 800 360V500H0Z' fill='%23386b4f'/><path d='M0 430Q400 410 800 430V500H0Z' fill='%231b4332'/></svg>">
+                    </figure>
+                    <figure class="reveal lift overflow-hidden rounded-2xl border border-line"><img
+                            class="aspect-[16/10] w-full object-cover" loading="lazy"
+                            alt="Alfalfa hay bales after harvest (placeholder image)"
+                            src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'><rect width='800' height='500' fill='%23f1e6d2'/><rect y='340' width='800' height='160' fill='%23d4a373'/><circle cx='250' cy='320' r='90' fill='%23b98547'/><circle cx='250' cy='320' r='48' fill='%23d4a373'/><circle cx='480' cy='335' r='80' fill='%23b98547'/><circle cx='480' cy='335' r='42' fill='%23d4a373'/><circle cx='650' cy='350' r='62' fill='%23b98547'/></svg>">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEPS -->
+        <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6">
+            <h2 class="reveal text-3xl font-semibold sm:text-4xl">From question to delivery in three steps.</h2>
+            <ol class="mt-12 grid gap-6 md:grid-cols-3">
+                <li class="reveal card p-7"><span class="font-display text-3xl text-gold" aria-hidden="true">1</span>
+                    <h3 class="mt-3 text-lg font-semibold">Browse or consult</h3>
+                    <p class="mt-2 text-muted">Browse or consult our catalog for your specific crop or land size.</p>
+                </li>
+                <li class="reveal card p-7"><span class="font-display text-3xl text-gold" aria-hidden="true">2</span>
+                    <h3 class="mt-3 text-lg font-semibold">Get your price</h3>
+                    <p class="mt-2 text-muted">Request a quote or call our Riyadh office directly for instant pricing.
+                    </p>
+                </li>
+                <li class="reveal card p-7"><span class="font-display text-3xl text-gold" aria-hidden="true">3</span>
+                    <h3 class="mt-3 text-lg font-semibold">Receive your order</h3>
+                    <p class="mt-2 text-muted">Fast dispatch from Al Dubiyah or convenient warehouse pickup.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- REVIEWS -->
+        <section id="reviews" class="bg-[var(--tint)] py-24">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6">
+                <h2 class="reveal text-3xl font-semibold sm:text-4xl">Trusted by farmers and contractors.</h2>
+                <p class="mt-2 text-sm text-muted">Sample testimonials: replace with your verified customer reviews
+                    before
+                    launch.</p>
+                <div class="mt-10 grid gap-6 md:grid-cols-3">
+                    <blockquote class="reveal card p-7">
+                        <p>“The alfalfa seed came up even across all twelve hectares. We reorder every season.”</p>
+                        <footer class="mt-5 text-sm text-muted">Abdullah R., commercial farmer, Al-Kharj</footer>
+                    </blockquote>
+                    <blockquote class="reveal card p-7">
+                        <p>“Straight answers on Salam Street and fair prices. They had my irrigation fittings ready when
+                            I arrived.”
+                        </p>
+                        <footer class="mt-5 text-sm text-muted">Faisal M., landscaping contractor</footer>
+                    </blockquote>
+                    <blockquote class="reveal card p-7">
+                        <p>“Friendly team who actually ask about your soil before recommending a fertilizer.”</p>
+                        <footer class="mt-5 text-sm text-muted">Khalid S., date and vegetable grower</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="mx-auto max-w-3xl px-4 py-24 sm:px-6">
+            <h2 class="reveal text-3xl font-semibold sm:text-4xl">Questions, answered.</h2>
+            <div class="mt-10 divide-y divide-[var(--line)] border-y border-line" id="faq"></div>
+        </section>
+
+        <!-- CONVERSION -->
+        <section id="quote" class="bg-forest py-24 text-sand">
+            <div class="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-2">
+                <div class="reveal">
+                    <h2 class="text-3xl font-semibold sm:text-5xl">Ready to Maximize Your Harvest?</h2>
+                    <p class="mt-5 max-w-md text-lg text-sand/85">Speak directly with our agricultural specialists in
+                        Riyadh
+                        today.</p>
+                    <a href="tel:+966114112913" class="btn btn-gold mt-8">Call +966 11 411 2913</a>
+                </div>
+                <div class="reveal rounded-2xl bg-sand p-6 text-[#2d3142] sm:p-8">
+                    <form id="lead" novalidate class="space-y-4">
+                        <div><label for="name" class="mb-1 block text-sm font-medium">Name</label><input id="name"
+                                name="name" class="field" autocomplete="name">
+                            <p class="err mt-1 hidden text-sm text-[#9b2c1d]" role="alert"></p>
+                        </div>
+                        <div><label for="phone" class="mb-1 block text-sm font-medium">Phone number</label><input
+                                id="phone" name="phone" type="tel" dir="ltr" class="field" autocomplete="tel"
+                                placeholder="+966 5X XXX XXXX">
+                            <p class="err mt-1 hidden text-sm text-[#9b2c1d]" role="alert"></p>
+                        </div>
+                        <div><label for="interest" class="mb-1 block text-sm font-medium">Product interest</label>
+                            <select id="interest" name="interest" class="field">
+                                <option value="">Choose a product</option>
+                                <option>Imported Crop Seeds</option>
+                                <option>Premium Alfalfa Seeds</option>
+                                <option>Fertilizers &amp; Nutrients</option>
+                                <option>Farm Tools &amp; Hardware</option>
+                                <option>Bulk order</option>
+                            </select>
+                            <p class="err mt-1 hidden text-sm text-[#9b2c1d]" role="alert"></p>
+                        </div>
+                        <div><label for="msg" class="mb-1 block text-sm font-medium">Message</label><textarea id="msg"
+                                name="msg" rows="3" class="field" placeholder="Crop, land size, quantity…"></textarea>
+                        </div>
+                        <button class="btn btn-primary w-full" type="submit">Get My Quote Now</button>
+                    </form>
+                    <div id="ok" class="hidden py-8 text-center" role="status">
+                        <p class="font-display text-2xl font-semibold text-forest"><span>Thank you,</span> <span
+                                id="okn"></span>
+                        </p>
+                        <p class="mt-2">We received your request and will call you within working hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-line">
+        <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 text-sm text-muted sm:px-6 md:grid-cols-3">
+            <div>
+                <p class="font-display text-lg font-semibold text-ink">Al-Hinta Agricultural Services</p>
+                <address class="mt-3 not-italic">Salam St, Al Dubiyah, Riyadh 12651, Saudi Arabia</address><a
+                    href="tel:+966114112913" dir="ltr" class="mt-1 inline-block text-primary">+966 11 411 2913</a>
+            </div>
+            <div>
+                <p class="font-semibold text-ink">Working hours</p>
+                <p class="mt-3">Saturday to Thursday, 08:00 – 20:00</p>
+            </div>
+            <nav aria-label="Footer" class="flex flex-wrap gap-x-5 gap-y-2"><a href="#seeds">Seeds</a><a
+                    href="#alfalfa">Alfalfa</a><a href="#fertilizers">Fertilizers</a><a href="#tools">Tools</a><a
+                    href="#about">About Us</a><a href="#reviews">Reviews</a></nav>
+        </div>
+        <p class="border-t border-line py-5 text-center text-xs text-muted">© <span id="yr">2026</span> <span>Al-Hinta
+                Agricultural Services.</span> <span>All rights reserved.</span></p>
+    </footer>
+
+    <!-- ===== SCRIPT ===== -->
+    <script>
+        (function () {
+            var products = [
+                ['seeds', 'Imported Crop Seeds', 'High-germination vegetable and field crop seeds sourced from global leaders, for even stands and predictable harvests.', 'M12 21V9M12 9c-4 0-6-3-6-6 4 0 6 3 6 6zm0 4c4 0 6-3 6-6-4 0-6 3-6 6z'],
+                ['alfalfa', 'Premium Alfalfa Seeds (برسيم)', 'High-protein forage seeds optimized for Saudi climate and livestock needs, for more cuttings per season.', 'M12 21V6M12 6c0-2 1-3 2-4 1 1.500 1 3-2 4zm0 5c-3 0-5-2-5-4 3 0 5 1 5 4zm0 5c3 0 5-2 5-4-3 0-5 1-5 4z'],
+                ['fertilizers', 'Advanced Fertilizers & Nutrients', 'Soil-enriching formulas designed for maximum yield in arid conditions, matched to your crop.', 'M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z'],
+                ['tools', 'Professional Farm Tools & Hardware', 'Durable irrigation and hand tools built for heavy agricultural use, season after season.', 'M14 6l4-4 4 4-4 4M14 10L4 20l-2-2 10-10']
+            ];
+            var g = document.getElementById('products');
+            products.forEach(function (p) {
+                var a = document.createElement('article'); a.id = p[0]; a.className = 'reveal lift card flex flex-col p-6';
+                a.innerHTML = '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + p[3] + '"/></svg>' +
+                    '<h3 class="mt-4 text-lg font-semibold">' + p[1] + '</h3><p class="mt-2 flex-1 text-sm leading-relaxed text-muted">' + p[2] + '</p>' +
+                    '<a href="#quote" data-opt="' + (products.indexOf(p) + 1) + '" class="btn btn-ghost mt-6 !py-2 text-sm">Inquire / Order</a>';
+                g.appendChild(a);
+            });
+
+            var faqs = [
+                ['Are your alfalfa and crop seeds certified for Saudi growing conditions?', 'Yes. We import certified seed lots and select varieties suited to Saudi heat, soil and irrigation. Ask us for the variety and germination details for your crop.'],
+                ['Do you offer delivery outside Riyadh or only local pickup?', 'Both. You can collect from our Salam Street warehouse, or we can dispatch to farms across the Kingdom. Share your location in the quote form for a delivery price.'],
+                ['How can I place a bulk order or request specific imported seed varieties?', 'Send a quote request or call +966 11 411 2913 with the variety, quantity and delivery date. We will confirm availability and pricing.'],
+                ['What are your working hours?', 'We are open Saturday to Thursday, 08:00 to 20:00.']
+            ];
+            var f = document.getElementById('faq');
+            faqs.forEach(function (q) {
+                var d = document.createElement('details'); d.className = 'reveal py-5';
+                d.innerHTML = '<summary class="flex items-center justify-between gap-4 font-display text-lg font-medium"><span>' + q[0] + '</span><svg class="chev shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p class="mt-3 text-muted">' + q[1] + '</p>';
+                f.appendChild(d);
+            });
+
+            var hdr = document.getElementById('hdr');
+            function onScroll() { hdr.classList.toggle('scrolled', window.scrollY > 10) }
+            window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+            var els = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (en) { en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+                els.forEach(function (e, i) { e.style.transitionDelay = (i % 4) * 60 + 'ms'; io.observe(e) });
+            } else els.forEach(function (e) { e.classList.add('in') });
+
+            document.addEventListener('click', function (e) {
+                var a = e.target.closest('[data-opt]');
+                if (a) { document.getElementById('interest').selectedIndex = +a.getAttribute('data-opt') }
+            });
+
+            var dirBtn = document.getElementById('dir'), root = document.documentElement;
+            dirBtn.addEventListener('click', function () {
+                setLang(root.lang === 'ar' ? 'en' : 'ar');
+            });
+
+            var L = '\u200e';
+            var AR = {
+                'Seeds': 'البذور', 'Alfalfa': 'البرسيم', 'Fertilizers': 'الأسمدة', 'Tools': 'الأدوات', 'About Us': 'من نحن', 'Reviews': 'التقييمات', 'Request Quote / Order': 'اطلب عرض سعر / طلبية', 'Switch language': 'تغيير اللغة', 'Al-Hinta': 'محلات الحنطة', 'Agricultural Services': 'للخدمات الزراعية',
+                "Riyadh's Trusted Agricultural Partner • 4.0★ Rated (221+ Reviews)": 'شريك الرياض الزراعي الموثوق • تقييم 4.0★ (أكثر من 221 تقييمًا)',
+                'Certified Imported Seeds & High-Yield Fertilizers for Saudi Farms.': 'بذور مستوردة معتمدة وأسمدة عالية الإنتاجية للمزارع السعودية.',
+                'From our home on Salam Street, Al Dubiyah to farms across the Kingdom—supplying premium alfalfa seeds, crop seeds, and professional farming tools with proven reliability.': 'من مقرنا في شارع السلام بحي الدوبية إلى المزارع في أنحاء المملكة، نوفّر بذور البرسيم الفاخرة وبذور المحاصيل وأدوات الزراعة الاحترافية بموثوقية مثبتة.',
+                'Explore Seed Catalog': 'استعرض كتالوج البذور', 'Call +966 11 411 2913': 'اتصل ' + L + '+966 11 411 2913',
+                'Imported seed lots, tested before they reach your field.': 'دفعات بذور مستوردة، يتم فحصها قبل وصولها إلى حقلك.',
+                'Illustration of imported seed sacks with green sprouts growing from open furrows': 'رسم لأكياس بذور مستوردة مع شتلات خضراء تنمو في الأخاديد',
+                'Salam Street warehouse (placeholder image)': 'مستودع شارع السلام (صورة مؤقتة)', 'Green crop rows in a Saudi field (placeholder image)': 'صفوف محاصيل خضراء في حقل سعودي (صورة مؤقتة)', 'Alfalfa hay bales after harvest (placeholder image)': 'بالات برسيم بعد الحصاد (صورة مؤقتة)',
+                'Verified Reviews': 'تقييمات موثقة', 'Riyadh market expertise': 'خبرة في سوق الرياض', 'Decades': 'عقود', 'Certified germination rates': 'نسب إنبات معتمدة', 'Salam St. warehouse': 'مستودع شارع السلام', 'Pickup & delivery': 'استلام وتوصيل',
+                'Built for Modern Saudi Agriculture.': 'مصمم للزراعة السعودية الحديثة.', 'The usual supply headaches': 'متاعب التوريد المعتادة',
+                'Inconsistent seed batches that germinate unevenly.': 'دفعات بذور غير متجانسة تنبت بشكل متفاوت.', 'Delayed rural transport that misses planting windows.': 'تأخر النقل إلى المناطق الريفية وفوات مواعيد الزراعة.', 'Unclear pricing that changes between calls.': 'أسعار غير واضحة تتغير من اتصال إلى آخر.',
+                'The Al-Hinta standard': 'معيار الحنطة', 'Rigorously tested imported seeds, batch by batch.': 'بذور مستوردة مفحوصة بدقة، دفعة بعد دفعة.', 'Transparent pricing, confirmed in your quote.': 'أسعار شفافة مؤكدة في عرض السعر.', 'Fast Riyadh dispatch or same-day warehouse pickup.': 'شحن سريع داخل الرياض أو استلام من المستودع في اليوم نفسه.',
+                'Everything your field needs, from one counter.': 'كل ما يحتاجه حقلك من مكان واحد.',
+                'Imported Crop Seeds': 'بذور محاصيل مستوردة', 'Premium Alfalfa Seeds (برسيم)': 'بذور برسيم فاخرة', 'Advanced Fertilizers & Nutrients': 'أسمدة ومغذيات متطورة', 'Professional Farm Tools & Hardware': 'أدوات ومعدات زراعية احترافية',
+                'High-germination vegetable and field crop seeds sourced from global leaders, for even stands and predictable harvests.': 'بذور خضروات ومحاصيل حقلية عالية الإنبات من كبرى الشركات العالمية، لمزروعات متجانسة وحصاد يمكن توقعه.',
+                'High-protein forage seeds optimized for Saudi climate and livestock needs, for more cuttings per season.': 'بذور علف عالية البروتين ملائمة للمناخ السعودي واحتياجات المواشي، لعدد حشّات أكبر في الموسم.',
+                'Soil-enriching formulas designed for maximum yield in arid conditions, matched to your crop.': 'تركيبات تغذي التربة لأعلى إنتاجية في الظروف الجافة، مناسبة لمحصولك.',
+                'Durable irrigation and hand tools built for heavy agricultural use, season after season.': 'أدوات ري ويد متينة للاستخدام الزراعي الشاق، موسمًا بعد موسم.', 'Inquire / Order': 'استفسر / اطلب',
+                'From question to delivery in three steps.': 'من الاستفسار إلى التوصيل في ثلاث خطوات.', 'Browse or consult': 'تصفّح أو استشر', 'Browse or consult our catalog for your specific crop or land size.': 'تصفّح كتالوجنا أو استشرنا حسب محصولك ومساحة أرضك.', 'Get your price': 'احصل على سعرك', 'Request a quote or call our Riyadh office directly for instant pricing.': 'اطلب عرض سعر أو اتصل بمكتبنا في الرياض للحصول على السعر فورًا.', 'Receive your order': 'استلم طلبك', 'Fast dispatch from Al Dubiyah or convenient warehouse pickup.': 'شحن سريع من الدوبية أو استلام مريح من المستودع.',
+                'Trusted by farmers and contractors.': 'موثوق لدى المزارعين والمقاولين.', 'Sample testimonials: replace with your verified customer reviews before launch.': 'آراء تجريبية: استبدلها بتقييمات عملائك الموثقة قبل الإطلاق.',
+                '“The alfalfa seed came up even across all twelve hectares. We reorder every season.”': '“نبت البرسيم بشكل متجانس في الهكتارات الاثني عشر كلها. نعيد الطلب كل موسم.”',
+                '“Straight answers on Salam Street and fair prices. They had my irrigation fittings ready when I arrived.”': '“إجابات صريحة وأسعار عادلة في شارع السلام. كانت وصلات الري جاهزة عند وصولي.”',
+                '“Friendly team who actually ask about your soil before recommending a fertilizer.”': '“فريق ودود يسأل عن تربتك فعلًا قبل أن يوصي بسماد.”',
+                'Abdullah R., commercial farmer, Al-Kharj': 'عبدالله ر.، مزارع تجاري، الخرج', 'Faisal M., landscaping contractor': 'فيصل م.، مقاول تنسيق حدائق', 'Khalid S., date and vegetable grower': 'خالد س.، مزارع تمور وخضروات',
+                'Questions, answered.': 'أسئلتكم وإجاباتنا.',
+                'Are your alfalfa and crop seeds certified for Saudi growing conditions?': 'هل بذور البرسيم والمحاصيل لديكم معتمدة للظروف الزراعية في السعودية؟',
+                'Yes. We import certified seed lots and select varieties suited to Saudi heat, soil and irrigation. Ask us for the variety and germination details for your crop.': 'نعم. نستورد دفعات بذور معتمدة ونختار أصنافًا تناسب حرارة السعودية وتربتها وأنظمة الري فيها. اسألنا عن الصنف وتفاصيل الإنبات لمحصولك.',
+                'Do you offer delivery outside Riyadh or only local pickup?': 'هل توفرون التوصيل خارج الرياض أم الاستلام المحلي فقط؟',
+                'Both. You can collect from our Salam Street warehouse, or we can dispatch to farms across the Kingdom. Share your location in the quote form for a delivery price.': 'كلاهما. يمكنك الاستلام من مستودعنا في شارع السلام، أو نشحن إلى المزارع في أنحاء المملكة. أرسل موقعك في نموذج الطلب لنحدد سعر التوصيل.',
+                'How can I place a bulk order or request specific imported seed varieties?': 'كيف أطلب كمية كبيرة أو أصنافًا محددة من البذور المستوردة؟',
+                'Send a quote request or call +966 11 411 2913 with the variety, quantity and delivery date. We will confirm availability and pricing.': 'أرسل طلب عرض سعر أو اتصل على ' + L + '+966 11 411 2913 مع ذكر الصنف والكمية وموعد التسليم، وسنؤكد التوفر والسعر.',
+                'What are your working hours?': 'ما هي ساعات العمل؟', 'We are open Saturday to Thursday, 08:00 to 20:00.': 'نعمل من السبت إلى الخميس، من 08:00 إلى 20:00.',
+                'Ready to Maximize Your Harvest?': 'هل أنت مستعد لزيادة محصولك؟', 'Speak directly with our agricultural specialists in Riyadh today.': 'تحدث اليوم مباشرة مع مختصينا الزراعيين في الرياض.',
+                'Name': 'الاسم', 'Phone number': 'رقم الجوال', 'Product interest': 'المنتج المطلوب', 'Message': 'الرسالة', 'Choose a product': 'اختر منتجًا', 'Premium Alfalfa Seeds': 'بذور برسيم فاخرة', 'Fertilizers & Nutrients': 'أسمدة ومغذيات', 'Farm Tools & Hardware': 'أدوات ومعدات زراعية', 'Bulk order': 'طلب بكميات كبيرة', 'Crop, land size, quantity…': 'المحصول، مساحة الأرض، الكمية…',
+                'Get My Quote Now': 'احصل على عرض السعر الآن', 'Thank you,': 'شكرًا لك،', 'We received your request and will call you within working hours.': 'استلمنا طلبك وسنتصل بك خلال ساعات العمل.',
+                'Enter your name.': 'أدخل اسمك.', 'Enter a valid phone number, for example +966 5X XXX XXXX.': 'أدخل رقم جوال صحيحًا، مثل ' + L + '+966 5X XXX XXXX.', 'Choose a product.': 'اختر منتجًا.',
+                'Al-Hinta Agricultural Services': 'محلات الحنطة للخدمات الزراعية', 'Salam St, Al Dubiyah, Riyadh 12651, Saudi Arabia': 'شارع السلام، الدوبية، الرياض 12651، المملكة العربية السعودية', 'Working hours': 'ساعات العمل', 'Saturday to Thursday, 08:00 – 20:00': 'من السبت إلى الخميس، 08:00 – 20:00', 'Al-Hinta Agricultural Services.': 'محلات الحنطة للخدمات الزراعية.', 'All rights reserved.': 'جميع الحقوق محفوظة.'
+            };
+            function setLang(l) {
+                root.lang = l; root.dir = l === 'ar' ? 'rtl' : 'ltr'; dirBtn.textContent = l === 'ar' ? 'English' : 'العربية';
+                document.title = l === 'ar' ? 'محلات الحنطة للخدمات الزراعية | Al-Hinta' : 'Al-Hinta Agricultural Services | محلات الحنطة';
+                document.querySelectorAll('body *').forEach(function (el) {
+                    ['alt', 'placeholder', 'aria-label'].forEach(function (a) { var v = el.getAttribute(a); if (v === null) return; var k = 'data-en-' + a; if (!el.hasAttribute(k)) el.setAttribute(k, v); var en = el.getAttribute(k); el.setAttribute(a, l === 'ar' && AR[en] ? AR[en] : en) });
+                    if (el.children.length || el.tagName === 'SCRIPT' || el.closest('svg')) return;
+                    var en = el.getAttribute('data-en');
+                    if (!en) { en = el.textContent.trim().replace(/\s+/g, ' '); if (!AR[en]) return; el.setAttribute('data-en', en) }
+                    el.textContent = l === 'ar' ? AR[en] : en;
+                });
+            }
+            var form = document.getElementById('lead');
+            function setErr(el, msg) { var p = el.parentNode.querySelector('.err'); el.setAttribute('aria-invalid', msg ? 'true' : 'false'); if (p) { p.textContent = (root.lang === 'ar' && AR[msg]) || msg; p.classList.toggle('hidden', !msg) } return !msg }
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var n = form.name, p = form.phone, s = form.interest;
+                var ok = [
+                    setErr(n, n.value.trim().length < 2 ? 'Enter your name.' : ''),
+                    setErr(p, /^\+?[0-9\s-]{9,15}$/.test(p.value.trim()) ? '' : 'Enter a valid phone number, for example +966 5X XXX XXXX.'),
+                    setErr(s, s.value ? '' : 'Choose a product.')
+                ];
+                if (ok.indexOf(false) > -1) { form.querySelector('[aria-invalid="true"]').focus(); return }
+                document.getElementById('okn').textContent = n.value.trim();
+                form.classList.add('hidden'); var o = document.getElementById('ok'); o.classList.remove('hidden'); o.setAttribute('tabindex', '-1'); o.focus();
+            });
+            document.getElementById('yr').textContent = new Date().getFullYear();
+            setLang('ar');
+        })();
+    </script>
+</body>
+
+</html>
